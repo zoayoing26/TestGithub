@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zoaing',
+        'NAME': 'zoa',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',
