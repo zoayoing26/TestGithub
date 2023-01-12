@@ -1,0 +1,31 @@
+<h1>{{ question.question_text}}</h1>
+<ul>
+    {% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text}}</li>
+
+    {% endfor %}
+</ul>
+<li>{{ question.pub_date |date:"Y-m-d" }}</li>
+
+
+
+<form action="{% url 'polls1:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>
+            <h1>{{ question.question_text }}</h1>
+        </legend>
+        {% if error_message2 %}<p><strong>@@@{{ error_message2 }}@@@@@</strong></p>{% endif %}
+        {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+</form>
+
+<p>
+    {{ question.choice_set.all }}
+</p>
+
+<a href="/polls/">메인</a>
